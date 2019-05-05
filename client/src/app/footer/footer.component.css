@@ -1,0 +1,19 @@
+.footer-item {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.hoverx:hover {
+  color: rgba(16, 178, 33, 0.96);
+}
+
+.hoverb:hover {
+  color: #c80000;
+}
+
+.line {
+  width: 1px;
+  height: 100px;/*竖线高度*/
+  background-color: gray;
+  opacity: 0.3;
+}

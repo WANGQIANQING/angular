@@ -1,0 +1,20 @@
+<div class="row">
+  <div *ngFor="let product of products | async" class="col-md-4 col-sm-4 col-lg-4
+    d-inline-flex flex-wrap flex-fill mt-3">
+    <div class="card">
+      <img class="img-thumbnail card-img-top" [src]=imgUrl[product.id-1]>
+      <div class="card-body" style="padding: 10px">
+        <div class="d-flex justify-content-between" style="padding: 5px 3px">
+          <h6 class="order-1">{{product.price}}元</h6>
+          <h6><a [routerLink]="['/product']" [queryParams]="{prodId:product.id}">{{product.title}}</a></h6>
+        </div>
+        <div class="text-secondary" style="font-size: 14px">
+          {{product.desc}}
+        </div>
+      </div>
+      <div style="padding-left: 5px">
+        <app-stars [rating]="product.rating"></app-stars>
+      </div>
+    </div>
+  </div>
+</div>

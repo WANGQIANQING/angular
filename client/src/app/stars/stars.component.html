@@ -1,0 +1,6 @@
+<p>
+  <span *ngFor="let star of stars; let i = index;" class="fa fa-star"
+        [ngClass]="{'fa-star-o': star.empty, 'fa-star-half-full': star.half}"
+        (click)="clickStar(i)"></span>
+  <span style="padding-left: 5px">{{rating | number:'1.0-2'}}星</span>
+</p>

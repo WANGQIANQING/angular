@@ -1,0 +1,84 @@
+<div class="card p-2">
+
+  <div id="demo" class="carousel slide" data-ride="carousel">
+    <!--指示符-->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+      <li data-target="#demo" data-slide-to="3"></li>
+      <li data-target="#demo" data-slide-to="4"></li>
+    </ul>
+    <!--轮播图片-->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img id="1" [src]="imgUrl[0]">
+      </div>
+      <div class="carousel-item">
+        <img id="2" [src]="imgUrl[1]">
+      </div>
+      <div class="carousel-item">
+        <img id="3" [src]="imgUrl[2]">
+      </div>
+      <div class="carousel-item">
+        <img id="4" [src]="imgUrl[3]">
+      </div>
+      <div class="carousel-item">
+        <img id="5" [src]="imgUrl[4]">
+      </div>
+    </div>
+
+    <!--左右切换按钮-->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+  <div>
+    <h5 class="pull-right">{{product?.price}}元</h5>
+    <h5>{{product?.title}}</h5>
+    <p>{{product?.desc}}</p>
+  </div>
+  <div>
+    <p class="pull-right">宝贝评价({{comments?.length}})</p>
+    <p>
+      <app-stars [rating]="product?.rating"></app-stars>
+    </p>
+  </div>
+</div>
+
+<div class="img-thumbnail" style="margin-top: 5px">
+  <button class="btn-default" [class.active]="isWatched" (click)="watchProduct()" style="margin-right: 20px;margin-top: 0px">
+    {{isWatched?'取消关注':'关注'}}
+  </button>
+  <label>最新出价:{{currentBid | number: '.0-2'}}元</label>
+</div>
+
+<div class="card p-3 mt-3 well">
+  <div>
+    <button class="btn btn-success" (click)="isCommentHidden = !isCommentHidden">发表评论</button>
+  </div>
+  <div [hidden]="isCommentHidden">
+    <div>
+      <app-stars [(rating)]="newRating" [readonly]="false"></app-stars>
+    </div>
+    <div>
+      <textarea [(ngModel)]="newComment"></textarea>
+    </div>
+    <button class="btn btn-sm btn-outline-info" (click)="addComment()">提交</button>
+  </div>
+  <p></p>
+  <hr>
+  <div class="row" *ngFor="let comment of comments">
+    <div class="col-md-12">
+      <app-stars [rating]="comment.rating"></app-stars>
+      <span>{{comment.user}}</span>
+      <span class="pull-right">{{comment.timestamp}}</span>
+      <p></p>
+      <p>{{comment.content}}</p>
+      <hr>
+    </div>
+  </div>
+</div>
